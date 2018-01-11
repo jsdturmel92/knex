@@ -164,6 +164,7 @@ export default class Migrator {
 
   _createMigrationLockTable(tableName, trx = this.knex) {
     return trx.schema.createTableIfNotExists(tableName, function(t) {
+      t.increments();
       t.integer('is_locked');
     });
   }
